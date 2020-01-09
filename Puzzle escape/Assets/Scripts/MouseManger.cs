@@ -10,11 +10,11 @@ public class MouseManger : MonoBehaviour
 
     public GameObject hoveredObject;
     public GameObject selectedObject;
-    public PlayerMotor motor;
+    //public PlayerMotor motor;
 
     void Start()
     {
-        motor = GetComponent<PlayerMotor>();
+      //  motor = GetComponent<PlayerMotor>();
     }
 
     // Update is called once per frame
@@ -33,7 +33,7 @@ public class MouseManger : MonoBehaviour
         }
         else
         {
-            clearSelection();
+            ClearHover();//the mouse is hovering over something empty
         }
 
         if (Input.GetMouseButtonDown(0))//0 is left 1 is right 2 middle button down
@@ -45,7 +45,7 @@ public class MouseManger : MonoBehaviour
             }
             if(selectedObject!=null)
             {
-                SelectObject(hoveredObject, hitInfo);
+                SelectObject(hoveredObject, hitInfo); //move player or whatever we would want to do
             }
         }
 
@@ -65,9 +65,9 @@ public class MouseManger : MonoBehaviour
         {
             if (obj == hoveredObject)
                 return;
-            clearSelection();
+           // ClearHover();
         }
-        hoveredObject = obj;
+        hoveredObject = obj;//if it did not return than modify what the hovered object is
     }
 
     void SelectObject(GameObject obj, RaycastHit hitInfo)
@@ -88,7 +88,7 @@ public class MouseManger : MonoBehaviour
         }
     }
 
-    void clearSelection()
+    void ClearHover()
     {
         hoveredObject = null;
     }
